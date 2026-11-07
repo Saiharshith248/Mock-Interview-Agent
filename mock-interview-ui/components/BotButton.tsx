@@ -2,15 +2,15 @@ import { NeonBot } from "@/components/NeonBot";
 import type { SessionStatus } from "@/lib/types";
 
 const CAPTION: Record<SessionStatus, string> = {
-  idle: "Tap Blip to start",
+  idle: "Tap Ava to start",
   connecting: "Connecting…",
-  listening: "Listening… tap Blip to end",
-  speaking: "Blip is speaking… tap to end",
-  error: "Something went wrong. Tap Blip to retry",
-  done: "Session ended. Tap Blip to start again",
+  listening: "Listening… tap Ava to end",
+  speaking: "Ava is speaking… tap to end",
+  error: "Something went wrong. Tap Ava to retry",
+  done: "Session ended. Tap Ava to start again",
 };
 
-/** The animated Blip bot IS the mic button. Fixed to the bottom of the screen. */
+/** The animated Ava bot IS the mic button. Fixed to the bottom of the screen. */
 export function BotButton({
   status,
   onStart,

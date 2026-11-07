@@ -138,7 +138,7 @@ def build_interview_prompt(profile: CandidateProfile, plan: InterviewPlan, minut
         exp += f" ({profile.experienceType})." if profile.experienceType else "."
     elif profile.experienceType:
         exp = f" The candidate's background: {profile.experienceType}."
-    return f"""You are Blip, {who}, conducting a mock {profile.interviewType.replace('_', ' ')}
+    return f"""You are Ava, {who}, conducting a mock {profile.interviewType.replace('_', ' ')}
 interview for the role of {profile.targetRole}.{exp} This is a spoken conversation.
 
 TIME

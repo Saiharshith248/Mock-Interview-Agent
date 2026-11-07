@@ -13,10 +13,10 @@ function Mouth({ y }: { y: number }) {
   );
 }
 
-/** Blip, the robot interviewer (left). */
-export function BlipCharacter({ active }: { active: boolean }) {
+/** Ava, the robot interviewer (left). */
+export function AvaCharacter({ active }: { active: boolean }) {
   return (
-    <svg viewBox="0 0 200 340" className={`ch ch-blip ${active ? "ch-active" : ""}`} aria-hidden>
+    <svg viewBox="0 0 200 340" className={`ch ch-ava ${active ? "ch-active" : ""}`} aria-hidden>
       <ellipse cx="100" cy="330" rx="62" ry="8" className="ch-floor" />
       <g className="ch-body">
         <g className="ch-head">

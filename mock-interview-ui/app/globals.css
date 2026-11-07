@@ -122,7 +122,7 @@ body {
 /* ------------------------------------------------------ standing characters */
 .ch { width: min(38vw, calc(clamp(8rem, 44dvh, 22rem) * 0.588)); height: auto; max-height: 100%; overflow: visible; fill: none; stroke: currentColor; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round;
   opacity: 0.5; filter: drop-shadow(0 0 3px currentColor); transition: opacity 0.3s, filter 0.3s; }
-.ch-blip { color: var(--cyan); }
+.ch-ava { color: var(--cyan); }
 .ch-you { color: var(--pink); }
 .ch .ch-fill { fill: rgba(10, 6, 30, 0.85); }
 .ch .ch-eye, .ch .ch-core, .ch .ch-antenna { fill: currentColor; stroke: none; }

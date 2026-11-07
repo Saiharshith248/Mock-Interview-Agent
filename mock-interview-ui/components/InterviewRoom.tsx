@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { BlipCharacter, YouCharacter } from "@/components/Characters";
+import { AvaCharacter, YouCharacter } from "@/components/Characters";
 import { FeedbackDialog } from "@/components/FeedbackDialog";
 import { SelfCam } from "@/components/SelfCam";
 import { useInterviewSession } from "@/hooks/useInterviewSession";
@@ -48,10 +48,10 @@ export function InterviewRoom({
           </div>
         </header>
 
-        {/* Stage: Blip on the left, you on the right. Only the one talking animates. No text here. */}
+        {/* Stage: Ava on the left, you on the right. Only the one talking animates. No text here. */}
         <section className="grid min-h-0 flex-1 grid-cols-2 items-end gap-2 py-3 md:grid-cols-[1fr_auto_1fr]">
           <div className="flex justify-start md:justify-center">
-            <BlipCharacter active={live && s.bot === "speaking"} />
+            <AvaCharacter active={live && s.bot === "speaking"} />
           </div>
           <div className="order-last col-span-2 flex justify-center self-center md:order-none md:col-span-1">
             <SelfCam />

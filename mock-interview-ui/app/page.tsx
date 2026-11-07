@@ -43,7 +43,7 @@ export default function Home() {
           </p>
         </header>
 
-        {/* Transcript on top; the Blip bot bar is pinned to the bottom of the screen and sits in the layout, so it never covers content. */}
+        {/* Transcript on top; the Ava bot bar is pinned to the bottom of the screen and sits in the layout, so it never covers content. */}
         <div className="grid gap-6 md:grid-cols-2">
           <div className="flex flex-col gap-4">
             <Transcript lines={s.transcript} />
