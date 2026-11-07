@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { TranscriptLine } from "@/lib/types";
 
 function Avatar({ who }: { who: "ava" | "user" }) {
@@ -27,13 +27,36 @@ function Avatar({ who }: { who: "ava" | "user" }) {
 
 /** Chat-style transcript: no box, tiny character avatars, hidden scrollbar. */
 export function Transcript({ lines }: { lines: TranscriptLine[] }) {
-  const end = useRef<HTMLDivElement>(null);
+  const box = useRef<HTMLDivElement>(null);
+  const stuck = useRef(true); // true while the reader is at (or near) the bottom
+  const [away, setAway] = useState(false);
+
+  const toBottom = (smooth = true) => {
+    const el = box.current;
+    if (el) el.scrollTo({ top: el.scrollHeight, behavior: smooth ? "smooth" : "auto" });
+  };
+
+  // Scrolls only this box (never the page), and only if the reader hasn't scrolled up.
   useEffect(() => {
-    end.current?.scrollIntoView({ behavior: "smooth" });
+    if (stuck.current) toBottom();
+    else setAway(true);
   }, [lines]);
 
+  const onScroll = () => {
+    const el = box.current;
+    if (!el) return;
+    const near = el.scrollHeight - el.scrollTop - el.clientHeight < 80;
+    stuck.current = near;
+    if (near) setAway(false);
+  };
+
   return (
-    <div className="no-scrollbar fade-edges h-96 overflow-y-auto px-1 py-4">
+    <div className="relative">
+    <div
+      ref={box}
+      onScroll={onScroll}
+      className="no-scrollbar fade-edges h-[clamp(12rem,42dvh,28rem)] overflow-y-auto overscroll-contain px-1 py-4"
+    >
       {lines.length === 0 && (
         <p className="text-sm text-cyan-100/40">The conversation will appear here.</p>
       )}
@@ -53,7 +76,15 @@ export function Transcript({ lines }: { lines: TranscriptLine[] }) {
           </div>
         ))}
       </div>
-      <div ref={end} />
+    </div>
+      {away && (
+        <button
+          onClick={() => { stuck.current = true; setAway(false); toBottom(); }}
+          className="neon-btn neon-btn-cyan absolute bottom-2 left-1/2 -translate-x-1/2 !px-3 !py-1 text-xs"
+        >
+          ↓ Latest
+        </button>
+      )}
     </div>
   );
 }

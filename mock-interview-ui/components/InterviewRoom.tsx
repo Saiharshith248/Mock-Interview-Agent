@@ -25,7 +25,7 @@ export function InterviewRoom({
 
   return (
     <main className="neon-page">
-      <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col p-5">
+      <div className="mx-auto flex h-dvh w-full max-w-6xl flex-col overflow-hidden p-4 sm:p-5">
         <header className="flex items-center justify-between">
           <div>
             <p className="text-[11px] tracking-[0.3em] text-fuchsia-300/80">MOCK INTERVIEW</p>
@@ -49,7 +49,7 @@ export function InterviewRoom({
         </header>
 
         {/* Stage: Blip on the left, you on the right. Only the one talking animates. No text here. */}
-        <section className="grid flex-1 grid-cols-2 items-end gap-4 py-6 md:grid-cols-[1fr_auto_1fr]">
+        <section className="grid min-h-0 flex-1 grid-cols-2 items-end gap-2 py-3 md:grid-cols-[1fr_auto_1fr]">
           <div className="flex justify-start md:justify-center">
             <BlipCharacter active={live && s.bot === "speaking"} />
           </div>

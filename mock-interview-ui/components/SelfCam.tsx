@@ -36,7 +36,7 @@ export function SelfCam() {
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <div className={`neon-frame relative aspect-video w-56 overflow-hidden rounded-2xl ${on ? "" : "opacity-60"}`}>
+      <div className={`neon-frame relative aspect-video w-36 md:w-56 overflow-hidden rounded-2xl ${on ? "" : "opacity-60"}`}>
         <video ref={video} autoPlay muted playsInline className="h-full w-full -scale-x-100 object-cover" />
         {!on && (
           <div className="absolute inset-0 grid place-items-center text-xs tracking-widest text-cyan-200/70">
@@ -47,7 +47,7 @@ export function SelfCam() {
       <button onClick={toggle} className="neon-btn neon-btn-cyan text-xs">
         {on ? "Hide my camera" : "Show my camera"}
       </button>
-      <p className="max-w-56 text-center text-[11px] text-cyan-100/50">
+      <p className="max-w-44 md:max-w-56 text-center text-[11px] text-cyan-100/50">
         {err ?? "Only you can see this. It is never recorded or sent anywhere."}
       </p>
     </div>

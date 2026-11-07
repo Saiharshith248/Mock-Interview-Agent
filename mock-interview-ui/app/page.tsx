@@ -33,8 +33,8 @@ export default function Home() {
   }
 
   return (
-    <main className="neon-page">
-      <div className="mx-auto w-full max-w-5xl p-6 pb-80">
+    <main className="neon-page flex flex-col">
+      <div className="mx-auto w-full max-w-5xl flex-1 p-4 sm:p-6">
         <header className="mb-8">
           <p className="text-[11px] tracking-[0.3em] text-fuchsia-300/80">STEP 1 OF 2</p>
           <h1 className="neon-title text-3xl font-bold">Mock Interview Setup</h1>
@@ -43,7 +43,7 @@ export default function Home() {
           </p>
         </header>
 
-        {/* Transcript on top; the Blip bot button is fixed at the bottom of the screen. */}
+        {/* Transcript on top; the Blip bot bar is pinned to the bottom of the screen and sits in the layout, so it never covers content. */}
         <div className="grid gap-6 md:grid-cols-2">
           <div className="flex flex-col gap-4">
             <Transcript lines={s.transcript} />

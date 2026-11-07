@@ -24,16 +24,16 @@ export function BotButton({
   const botState = status === "speaking" ? "speaking" : status === "listening" ? "listening" : "idle";
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 flex flex-col items-center bg-gradient-to-t from-[#05010f] via-[#05010f]/90 to-transparent pb-3 pt-6">
+    <div className="sticky bottom-0 z-40 mt-auto flex flex-col items-center bg-gradient-to-t from-[#05010f] via-[#05010f]/90 to-transparent pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-4">
       <button
         onClick={live ? onStop : onStart}
         disabled={status === "connecting"}
         aria-label={CAPTION[status]}
-        className={`group relative h-48 w-48 cursor-pointer rounded-full transition-transform hover:scale-105 active:scale-95 disabled:cursor-wait ${
+        className={`bot-btn cursor-pointer disabled:cursor-wait ${
           status === "connecting" ? "animate-pulse" : ""
         }`}
       >
-        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.8]">
+        <span className="bot-btn-inner">
           <NeonBot state={botState} />
         </span>
       </button>

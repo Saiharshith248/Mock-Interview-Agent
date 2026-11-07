@@ -25,6 +25,14 @@ export function FeedbackDialog({
   onExit: () => void;
 }) {
   useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, []);
+
+  useEffect(() => {
     const h = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", h);
     return () => window.removeEventListener("keydown", h);
@@ -49,14 +57,14 @@ export function FeedbackDialog({
         aria-modal="true"
         aria-labelledby="fb-title"
         onClick={(e) => e.stopPropagation()}
-        className="neon-card flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden"
+        className="neon-card flex max-h-[90dvh] w-full max-w-2xl flex-col overflow-hidden"
       >
         <div className="flex items-center justify-between border-b border-cyan-400/30 px-5 py-4">
           <h2 id="fb-title" className="neon-title text-xl font-bold">Interview feedback</h2>
           <button onClick={onClose} aria-label="Close" className="neon-text text-2xl leading-none">×</button>
         </div>
 
-        <div className="space-y-4 overflow-y-auto p-5">
+        <div className="space-y-4 overflow-y-auto overscroll-contain p-5">
           {!report && !error && (
             <p className="neon-text animate-pulse py-8 text-center">Scoring your interview…</p>
           )}
