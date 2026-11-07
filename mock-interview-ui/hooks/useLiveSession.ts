@@ -269,7 +269,7 @@ export function useLiveSession(): LiveSession {
 
   const stop = useCallback(() => {
     teardown();
-    setStatus("done");
+    setStatus("idle"); // "done" is reserved for a real hand-off to the interview
   }, [teardown, setStatus]);
 
   const sendPasted = useCallback(

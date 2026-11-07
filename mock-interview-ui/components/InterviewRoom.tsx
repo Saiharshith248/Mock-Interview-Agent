@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AvaCharacter, YouCharacter } from "@/components/Characters";
+import { StepBar } from "@/components/StepBar";
 import { FeedbackDialog } from "@/components/FeedbackDialog";
 import { SelfCam } from "@/components/SelfCam";
 import { useInterviewSession } from "@/hooks/useInterviewSession";
@@ -26,10 +27,11 @@ export function InterviewRoom({
   return (
     <main className="neon-page">
       <div className="mx-auto flex h-dvh w-full max-w-6xl flex-col overflow-hidden p-4 sm:p-5">
-        <header className="flex items-center justify-between">
+        <StepBar current={ended ? 3 : 2} />
+        <header className="mt-3 flex items-center justify-between">
           <div>
             <p className="text-[11px] tracking-[0.3em] text-fuchsia-300/80">MOCK INTERVIEW</p>
-            <h1 className="neon-title text-xl font-bold">
+            <h1 className="neon-title text-2xl font-bold sm:text-3xl">
               {profile.targetRole}
               {profile.company ? ` · ${profile.company}` : ""}
             </h1>

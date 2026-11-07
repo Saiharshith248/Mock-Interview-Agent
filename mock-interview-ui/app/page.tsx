@@ -4,6 +4,8 @@ import { InterviewRoom } from "@/components/InterviewRoom";
 import { BotButton } from "@/components/BotButton";
 import { PasteBox } from "@/components/PasteBox";
 import { ProfileCard } from "@/components/ProfileCard";
+import { PrepSpinner } from "@/components/PrepSpinner";
+import { StepBar } from "@/components/StepBar";
 import { Transcript } from "@/components/Transcript";
 import { useLiveSession } from "@/hooks/useLiveSession";
 
@@ -19,14 +21,19 @@ export default function Home() {
     return (
       <main className="neon-page">
         <div className="mx-auto w-full max-w-xl p-6">
-          <h1 className="neon-title mb-4 text-2xl font-bold">
-            {s.error ? "Couldn't set up your interview" : "Setting up your interview…"}
+          <StepBar current={2} />
+          <h1 className="neon-title mb-2 mt-8 text-center text-4xl font-bold sm:text-5xl">
+            {s.error ? "Couldn't set up your interview" : "Preparing your interview"}
           </h1>
-          {s.error && <p className="mb-4 text-sm text-pink-400">{s.error}</p>}
-          <ProfileCard profile={s.profile} />
-          <button onClick={s.start} className="neon-btn neon-btn-cyan mt-5 text-sm">
-            Start over
-          </button>
+          {s.error ? <p className="mb-4 mt-4 text-center text-sm text-pink-400">{s.error}</p> : <PrepSpinner />}
+          <div className="mt-4">
+            <ProfileCard profile={s.profile} />
+          </div>
+          {s.error && (
+            <div className="mt-5 text-center">
+              <button onClick={s.start} className="neon-btn neon-btn-cyan text-sm">Start over</button>
+            </div>
+          )}
         </div>
       </main>
     );
@@ -35,10 +42,10 @@ export default function Home() {
   return (
     <main className="neon-page flex flex-col">
       <div className="mx-auto w-full max-w-5xl flex-1 p-4 sm:p-6">
-        <header className="mb-8">
-          <p className="text-[11px] tracking-[0.3em] text-fuchsia-300/80">STEP 1 OF 2</p>
-          <h1 className="neon-title text-3xl font-bold">Mock Interview Setup</h1>
-          <p className="mt-1 text-sm text-cyan-100/60">
+        <StepBar current={1} />
+        <header className="mb-8 mt-8 text-center">
+          <h1 className="neon-title text-4xl font-bold sm:text-6xl">Mock Interview Setup</h1>
+          <p className="mx-auto mt-3 max-w-2xl text-sm text-cyan-100/60 sm:text-base">
             Talk to Ava for the short answers; paste the long ones. Use Chrome and headphones.
           </p>
         </header>
