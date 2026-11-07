@@ -1,0 +1,21 @@
+# OS / editor
+.DS_Store
+
+# Secrets: never commit real keys
+.env
+.env.*
+!.env.example
+
+# Backend (Python)
+backend/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Frontend (Next.js)
+mock-interview-ui/node_modules/
+mock-interview-ui/.next/
+mock-interview-ui/out/
+mock-interview-ui/*.tsbuildinfo
+mock-interview-ui/next-env.d.ts
+npm-debug.log*
