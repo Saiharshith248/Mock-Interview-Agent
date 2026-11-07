@@ -23,7 +23,7 @@ export function PrepSpinner() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center gap-6 py-6" role="status" aria-live="polite">
+    <div className="flex flex-col items-center gap-5" role="status" aria-live="polite">
       <div className="prep-spinner">
         <span className="prep-orbit o1"><i /></span>
         <span className="prep-orbit o2"><i /></span>
@@ -38,7 +38,7 @@ export function PrepSpinner() {
           <rect x="22" y="48" width="20" height="10" rx="4" className="prep-head" />
         </svg>
       </div>
-      <p key={i} className="prep-joke neon-text min-h-6 text-center text-base">{JOKES[i]}</p>
+      <p key={i} className="prep-joke min-h-6 text-center text-sm text-haze">{JOKES[i]}</p>
     </div>
   );
 }

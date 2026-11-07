@@ -60,4 +60,6 @@ export type LiveSession = {
   start: () => Promise<void>;
   stop: () => void;
   sendPasted: (kind: PastedKind, text: string) => void;
+  /** Loudness (0..1) of whoever is talking right now, for animating the orb. Optional. */
+  audioLevel?: () => number;
 };

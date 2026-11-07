@@ -75,5 +75,11 @@ export function useMockSession(): LiveSession {
     timers.current.push(setTimeout(() => setStatus("listening"), 1500));
   }, [say]);
 
-  return { status, transcript, profile, error, start, stop, sendPasted };
+  // Fake voice so the orb moves while building the UI without the Live API.
+  const audioLevel = useCallback(() => {
+    const t = performance.now() / 1000;
+    return Math.max(0, 0.45 + 0.35 * Math.sin(t * 7.3) * Math.sin(t * 2.1));
+  }, []);
+
+  return { status, transcript, profile, error, start, stop, sendPasted, audioLevel };
 }

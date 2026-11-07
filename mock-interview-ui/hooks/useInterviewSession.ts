@@ -253,7 +253,24 @@ export function useInterviewSession(interview: InterviewStart, profile: Partial<
 
   const endNow = useCallback(() => void finish(), [finish]);
 
+  /** Live loudness getters (0..1) for the orb and mic meters. Read every animation frame. */
+  const botLevel = useCallback(() => player.current?.level() ?? 0, []);
+  const userLevel = useCallback(() => mic.current?.level ?? 0, []);
+
   useEffect(() => teardown, [teardown]);
 
-  return { phase, bot, userSpeaking, asked, total: interview.plan.questions.length, secondsLeft, report, error, begin, endNow };
+  return {
+    phase,
+    bot,
+    userSpeaking,
+    asked,
+    total: interview.plan.questions.length,
+    secondsLeft,
+    report,
+    error,
+    begin,
+    endNow,
+    botLevel,
+    userLevel,
+  };
 }

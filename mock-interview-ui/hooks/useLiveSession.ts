@@ -280,7 +280,12 @@ export function useLiveSession(): LiveSession {
     [patchProfile],
   );
 
+  const audioLevel = useCallback(
+    () => (statusRef.current === "speaking" ? player.current?.level() ?? 0 : mic.current?.level ?? 0),
+    [],
+  );
+
   useEffect(() => teardown, [teardown]);
 
-  return { status, transcript, profile, error, interview, start, stop, sendPasted };
+  return { status, transcript, profile, error, interview, start, stop, sendPasted, audioLevel };
 }

@@ -1,9 +1,9 @@
 # Mock Interview Agent
 
-A voice-first mock interview app with a neon UI.
+A voice-first mock interview app with a dark "night studio" UI.
 
 1. **Setup (intake):** you talk to **Ava**, a voice assistant, who collects your target role, plus a pasted job description (both required) and optionally company, interview type, duration, experience and resume.
-2. **Interview:** Ava becomes your interviewer and asks a question plan tailored to your job description, sized to your chosen duration. Two animated characters stand on screen and animate when they talk. An optional self-camera preview helps you feel confident (it is never recorded or sent anywhere).
+2. **Interview:** after a quick mic and camera check, Ava becomes your interviewer and asks a question plan tailored to your job description, sized to your chosen duration. Her animated face reacts to her voice and yours. An optional self-camera tile helps you feel confident (it is never recorded or sent anywhere).
 3. **Feedback:** End the interview to get a score, strengths, improvements and learning resources.
 
 ## How it works
@@ -26,7 +26,7 @@ Browser (Next.js)  ──mic/audio (WebSocket, short-lived token)──►  Gemi
 - **Node.js 20.9+** and npm
 - **Python 3.11+**
 - A **Gemini API key** from [Google AI Studio](https://aistudio.google.com/apikey)
-- **Google Chrome** and **headphones** (otherwise the mic hears Ava and it interrupts itself)
+- **Google Chrome** and **headphones** (otherwise the mic hears Ava and she interrupts herself)
 
 ## Run it, step by step
 
@@ -78,10 +78,10 @@ npm run dev
 ### 4. Use it
 
 1. Open <http://localhost:3000> in **Chrome** and put on headphones.
-2. Tap the **Ava** bot at the bottom and allow the microphone.
+2. Click **Start talking** (or tap Ava's face) and allow the microphone.
 3. Say your target role, then paste the job description into the box on screen. Answer the rest by voice, or skip them.
-4. Confirm Ava's recap. The interview room loads.
-5. Click **Begin interview**. Click **End interview** when done, then **Feedback** for your score and resources, or **Exit** to start over.
+4. Confirm Ava's recap. The interview lobby loads.
+5. Check your mic, optionally turn on your camera, and click **Begin interview**. Click **End interview** when done to see your score, feedback and resources.
 
 ## Configuration
 
@@ -119,7 +119,7 @@ npm run build
 
 - **`/api/live-token` says "GEMINI_API_KEY is not set"**: check `backend/.env`, make sure the file is saved, then restart the backend (it reads `.env` only at startup).
 - **Ava doesn't connect or the mic is silent**: use Chrome, allow microphone access, and check the browser console. The Live API connects straight from the browser to Google, so a restrictive Wi-Fi network can block it. Try a phone hotspot.
-- **Ava keeps interrupting itself**: use headphones.
+- **Ava keeps interrupting herself**: use headphones.
 - **"Cannot reach backend"**: confirm the backend is running on port 8000 and `NEXT_PUBLIC_BACKEND_URL` matches. Restart `npm run dev` after editing `.env.local`.
 
 ## Privacy notes
